@@ -18,4 +18,8 @@ export class AnnotationComponent {
     this.remove.emit();
   }
 
+  setAnnotationType(type: 'text' | 'image') {
+    this.annotation.type = type;
+  }
+
 }

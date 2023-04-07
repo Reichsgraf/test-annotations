@@ -6,5 +6,18 @@
 <div class="annotation-content"
      [style.left]="annotation.x | getAnnotationContentPosition:annotationAnchorRadius"
      [style.top]="annotation.y | getAnnotationContentPosition:annotationAnchorRadius">
-  choose da type
+  <ng-container *ngIf="!annotation.type">
+    <button class="annotation-type-option" (click)="setAnnotationType('text')">
+      <img src="assets/icons/align-left-solid.svg" alt="Text">
+    </button>
+    <button class="annotation-type-option" (click)="setAnnotationType('image')">
+      <img src="assets/icons/image-solid.svg" alt="Image">
+    </button>
+  </ng-container>
+  <ng-container *ngIf="annotation.type && !annotation.content">
+    place under sun for inputs
+  </ng-container>
+  <ng-container *ngIf="annotation.type && annotation.content">
+    place for content
+  </ng-container>
 </div>
