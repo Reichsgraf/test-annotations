@@ -1,0 +1,21 @@
+.annotation-anchor {
+  position: absolute;
+  border-radius: 100%;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.annotation-content {
+  position: absolute;
+  border-radius: 4px;
+  background-color: cornflowerblue;
+  color: white;
+  padding: 4px;
+}

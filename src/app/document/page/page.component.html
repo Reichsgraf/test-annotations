@@ -1,0 +1,6 @@
+<img [src]="page" alt="" (click)="addAnnotation($event)">
+
+<ng-container *ngFor="let annotation of annotations; index as i">
+  <app-annotation [annotation]="annotation" (remove)="removeAnnotation(i)">
+  </app-annotation>
+</ng-container>

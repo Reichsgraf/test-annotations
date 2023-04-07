@@ -1,0 +1,10 @@
+<div class="annotation-anchor" (click)="removeAnnotation()"
+     [style.left]="annotation.x | getAnnotationAnchorPosition:annotationAnchorRadius"
+     [style.top]="annotation.y | getAnnotationAnchorPosition:annotationAnchorRadius">
+  ×
+</div>
+<div class="annotation-content"
+     [style.left]="annotation.x | getAnnotationContentPosition:annotationAnchorRadius"
+     [style.top]="annotation.y | getAnnotationContentPosition:annotationAnchorRadius">
+  choose da type
+</div>
