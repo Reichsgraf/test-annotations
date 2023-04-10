@@ -9,6 +9,9 @@ import {routes} from "./app.route";
 import { AnnotationComponent } from './document/page/annotation/annotation.component';
 import {GetAnnotationAnchorPositionPipe} from "../shared/pipes/get-annotation-anchor-position.pipe";
 import {GetAnnotationContentPositionPipe} from "../shared/pipes/get-annotation-content-position.pipe";
+import {ReactiveFormsModule} from "@angular/forms";
+import {GetAnnotationStylePipe} from "../shared/pipes/get-annotation-style.pipe";
+import {FilterAnnotationsByPagePipe} from "../shared/pipes/filter-annotations-by-page.pipe";
 
 @NgModule({
   declarations: [
@@ -19,15 +22,18 @@ import {GetAnnotationContentPositionPipe} from "../shared/pipes/get-annotation-c
 
     GetAnnotationAnchorPositionPipe,
     GetAnnotationContentPositionPipe,
+    GetAnnotationStylePipe,
+    FilterAnnotationsByPagePipe
   ],
-  imports: [
-    BrowserModule,
-    RouterOutlet,
-    RouterModule.forRoot(routes)
-  ],
+    imports: [
+        BrowserModule,
+        RouterOutlet,
+        RouterModule.forRoot(routes),
+        ReactiveFormsModule
+    ],
   providers: [
     GetAnnotationAnchorPositionPipe,
-    GetAnnotationContentPositionPipe
+    GetAnnotationContentPositionPipe,
   ],
   bootstrap: [AppComponent]
 })

@@ -3,7 +3,9 @@
      [style.top]="annotation.y | getAnnotationAnchorPosition:annotationAnchorRadius">
   ×
 </div>
+
 <div class="annotation-content"
+     [style]="annotation.type | getAnnotationStyle:annotation.content"
      [style.left]="annotation.x | getAnnotationContentPosition:annotationAnchorRadius"
      [style.top]="annotation.y | getAnnotationContentPosition:annotationAnchorRadius">
   <ng-container *ngIf="!annotation.type">
@@ -14,10 +16,24 @@
       <img src="assets/icons/image-solid.svg" alt="Image">
     </button>
   </ng-container>
-  <ng-container *ngIf="annotation.type && !annotation.content">
-    place under sun for inputs
+
+  <ng-container *ngIf="annotation.type === 'text'">
+    <ng-container *ngIf="!annotation.content; else content">
+      <form [formGroup]="formGroup" (ngSubmit)="setAnnotationContent()">
+        <input class="annotation-content-input" type="text" formControlName="content">
+      </form>
+    </ng-container>
+    <ng-template #content>
+      <span class="annotation-text-content">{{formGroup.get('content')?.value}}</span>
+    </ng-template>
   </ng-container>
-  <ng-container *ngIf="annotation.type && annotation.content">
-    place for content
+
+  <ng-container *ngIf="annotation.type === 'image'">
+    <ng-container *ngIf="!annotation.content; else content">
+      <input class="annotation-content-input" type="file" accept="image/*" (change)="setAnnotationContent($event)">
+    </ng-container>
+    <ng-template #content>
+      <img class="annotation-image-content" [src]="annotation.content" alt="">
+    </ng-template>
   </ng-container>
 </div>

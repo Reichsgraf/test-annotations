@@ -15,9 +15,10 @@
 .annotation-content {
   position: absolute;
   border-radius: 4px;
-  background-color: cornflowerblue;
+  background-color: lightseagreen;
   color: white;
   padding: 4px;
+  width: max-content;
 }
 
 .annotation-type-option {
@@ -29,5 +30,21 @@
   img {
     width: 18px;
     height: 18px;
+    filter: invert(99%) sepia(100%) saturate(0%) hue-rotate(240deg) brightness(104%) contrast(100%);
   }
+}
+
+.annotation-content-input {
+  margin: 4px 6px;
+  background-color: white;
+  color: black;
+}
+
+.annotation-text-content {
+  color: black;
+}
+
+.annotation-image-content {
+  max-width: 200px;
+  object-fit: contain;
 }

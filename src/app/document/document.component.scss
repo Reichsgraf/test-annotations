@@ -1,6 +1,29 @@
 :host {
   display: flex;
   flex-direction: column;
+  overflow-scrolling: unset;
+}
+
+.document-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: lightseagreen;
+  padding: 16px;
+  z-index: 1;
+  position: sticky;
+  top: 0;
+
+  &__title {
+    font-weight: bolder;
+    font-size: 40px;
+    color: white;
+  }
+}
+
+.document-content {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   padding: 32px;
   gap: 32px;
