@@ -11,6 +11,7 @@ import {GetAnnotationContentPositionPipe} from "../shared/pipes/get-annotation-c
 import {ReactiveFormsModule} from "@angular/forms";
 import {GetAnnotationStylePipe} from "../shared/pipes/get-annotation-style.pipe";
 import {GetPageStylePipe} from "../shared/pipes/get-page-style.pipe";
+import {DragAndDropDirective} from "../shared/directives/drag-and-drop.directive";
 
 @NgModule({
   declarations: [
@@ -24,6 +25,8 @@ import {GetPageStylePipe} from "../shared/pipes/get-page-style.pipe";
 
     GetPageStylePipe,
     GetAnnotationStylePipe,
+
+    DragAndDropDirective,
   ],
     imports: [
         BrowserModule,
@@ -34,6 +37,9 @@ import {GetPageStylePipe} from "../shared/pipes/get-page-style.pipe";
   providers: [
     GetAnnotationAnchorPositionPipe,
     GetAnnotationContentPositionPipe,
+  ],
+  exports: [
+    DragAndDropDirective,
   ],
   bootstrap: [AppComponent]
 })

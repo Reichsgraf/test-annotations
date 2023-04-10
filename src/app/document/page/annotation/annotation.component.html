@@ -4,7 +4,7 @@
   ×
 </div>
 
-<div class="annotation-content"
+<div #content class="annotation-content"
      [style]="annotation.type | getAnnotationStyle:annotation.content"
      [style.left]="annotation.x | getAnnotationContentPosition:annotationAnchorRadius"
      [style.top]="annotation.y | getAnnotationContentPosition:annotationAnchorRadius:scale">
@@ -24,7 +24,7 @@
       </form>
     </ng-container>
     <ng-template #content>
-      <span class="annotation-text-content">{{formGroup.get('content')?.value}}</span>
+      <div class="annotation-text-content" draggable="true">{{formGroup.get('content')?.value}}</div>
     </ng-template>
   </ng-container>
 

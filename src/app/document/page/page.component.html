@@ -2,6 +2,7 @@
 
 <ng-container *ngFor="let annotation of annotations; index as i">
   <app-annotation *ngIf="annotation.page === pageIndex"
+                  drag-and-drop (dropOn)="dropOnHandler($event, annotation)" (dragOver)="dragOverHandler($event)"
                   [annotation]="annotation" (remove)="removeAnnotation(i)"
                   [scale]="scale">
   </app-annotation>

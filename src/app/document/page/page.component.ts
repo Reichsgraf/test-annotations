@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectorRef, Component, Input} from '@angular/core';
 import {PageAnnotation} from "../../../shared/models/page-annotation";
 import {PageAnnotationService} from "../../../shared/services/page-annotation.service";
 
@@ -22,7 +22,8 @@ export class PageComponent {
   @Input() annotations: PageAnnotation[] = [];
   @Input() scale = 100;
 
-  constructor(private pageAnnotationService: PageAnnotationService) {
+  constructor(private pageAnnotationService: PageAnnotationService,
+              private cdr: ChangeDetectorRef) {
   }
 
   addAnnotation(event: any) {
@@ -31,6 +32,16 @@ export class PageComponent {
 
   removeAnnotation(index: number) {
     this.pageAnnotationService.removeAnnotation(index);
+  }
+
+  dropOnHandler(event: any, annotation: PageAnnotation) {
+    annotation.x += event.x;
+    annotation.y += event.y;
+    this.cdr.detectChanges();
+  }
+
+  dragOverHandler(event: any) {
+
   }
 
 }

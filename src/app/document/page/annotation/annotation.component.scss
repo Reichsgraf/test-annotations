@@ -43,9 +43,12 @@
 .annotation-text-content {
   color: black;
   user-select: none;
+  cursor: move;
 }
 
 .annotation-image-content {
   max-width: 200px;
   object-fit: contain;
 }
+
+
