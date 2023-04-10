@@ -20,12 +20,13 @@ export class PageComponent {
   private _pageIndex = 0;
 
   @Input() annotations: PageAnnotation[] = [];
+  @Input() scale = 100;
 
   constructor(private pageAnnotationService: PageAnnotationService) {
   }
 
   addAnnotation(event: any) {
-    this.pageAnnotationService.addAnnotation(event, this.pageIndex);
+    this.pageAnnotationService.addAnnotation(event, this.pageIndex, this.scale);
   }
 
   removeAnnotation(index: number) {

@@ -13,6 +13,7 @@ export class DocumentComponent implements OnInit {
 
   document?: AppDocument;
   annotations: PageAnnotation[] = [];
+  scale = 100;
 
   constructor(private pageAnnotationService: PageAnnotationService) {
   }
@@ -24,6 +25,10 @@ export class DocumentComponent implements OnInit {
 
   save() {
     this.pageAnnotationService.saveAnnotations();
+  }
+
+  changeScale(direction: boolean) {
+    this.scale += direction ? 10 : -10;
   }
 
 }

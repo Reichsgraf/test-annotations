@@ -6,7 +6,7 @@ export class PageAnnotationService {
 
   pageAnnotations: PageAnnotation[] = [];
 
-  addAnnotation(event: any, pageIndex: number) {
+  addAnnotation(event: any, pageIndex: number, scale: number) {
     const annotationsLength = this.pageAnnotations.length;
 
     if (annotationsLength > 0 &&
@@ -16,8 +16,8 @@ export class PageAnnotationService {
 
     this.pageAnnotations.push(<PageAnnotation> {
       page: pageIndex,
-      x: event.offsetX,
-      y: event.offsetY,
+      x: event.offsetX / (scale / 100),
+      y: event.offsetY / (scale / 100),
       type: '',
       content: ''
     });

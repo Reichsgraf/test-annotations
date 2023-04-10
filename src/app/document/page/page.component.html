@@ -1,6 +1,8 @@
-<img [src]="page" alt="" (click)="addAnnotation($event)">
+<img [src]="page" alt="" (click)="addAnnotation($event)" [style]="scale | getPageStyle">
 
 <ng-container *ngFor="let annotation of annotations; index as i">
-  <app-annotation *ngIf="annotation.page === pageIndex" [annotation]="annotation" (remove)="removeAnnotation(i)">
+  <app-annotation *ngIf="annotation.page === pageIndex"
+                  [annotation]="annotation" (remove)="removeAnnotation(i)"
+                  [scale]="scale">
   </app-annotation>
 </ng-container>

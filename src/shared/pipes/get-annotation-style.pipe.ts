@@ -11,7 +11,7 @@ export class GetAnnotationStylePipe implements PipeTransform {
     }
 
     if (type && content) {
-      return 'background: yellow; opacity: 0.5;';
+      return 'background: yellow; opacity: 0.5; cursor: move;';
     }
 
     return 'background: lightseagreen';

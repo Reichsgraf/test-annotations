@@ -10,6 +10,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 export class AnnotationComponent {
 
   @Input() annotation!: PageAnnotation;
+  @Input() scale = 100;
 
   @Output() remove: EventEmitter<void> = new EventEmitter();
 

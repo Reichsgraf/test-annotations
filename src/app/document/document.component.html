@@ -1,11 +1,17 @@
 <div class="document-header">
   <div class="document-header__title">{{document?.title}}</div>
-  <div>
+  <div class="document-header__settings">
+    {{scale}}
+    <button (click)="changeScale(true)">+</button>
+    <button (click)="changeScale(false)">-</button>
     <button (click)="save()">Save</button>
   </div>
 </div>
 
 <div class="document-content">
-  <app-page *ngFor="let page of document?.pages; index as i" [page]="page" [pageIndex]="i" [annotations]="annotations">
+  <app-page *ngFor="let page of document?.pages; index as i"
+            [page]="page" [pageIndex]="i"
+            [annotations]="annotations"
+            [scale]="scale">
   </app-page>
 </div>

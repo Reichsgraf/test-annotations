@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { DocumentComponent } from './document/document.component';
 import {RouterModule, RouterOutlet} from "@angular/router";
@@ -11,7 +10,7 @@ import {GetAnnotationAnchorPositionPipe} from "../shared/pipes/get-annotation-an
 import {GetAnnotationContentPositionPipe} from "../shared/pipes/get-annotation-content-position.pipe";
 import {ReactiveFormsModule} from "@angular/forms";
 import {GetAnnotationStylePipe} from "../shared/pipes/get-annotation-style.pipe";
-import {FilterAnnotationsByPagePipe} from "../shared/pipes/filter-annotations-by-page.pipe";
+import {GetPageStylePipe} from "../shared/pipes/get-page-style.pipe";
 
 @NgModule({
   declarations: [
@@ -22,8 +21,9 @@ import {FilterAnnotationsByPagePipe} from "../shared/pipes/filter-annotations-by
 
     GetAnnotationAnchorPositionPipe,
     GetAnnotationContentPositionPipe,
+
+    GetPageStylePipe,
     GetAnnotationStylePipe,
-    FilterAnnotationsByPagePipe
   ],
     imports: [
         BrowserModule,
