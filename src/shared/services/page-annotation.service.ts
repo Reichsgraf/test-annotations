@@ -27,6 +27,12 @@ export class PageAnnotationService {
     this.pageAnnotations.splice(index, 1);
   }
 
+  moveAnnotation(annotation: PageAnnotation, x: number, y: number) {
+    annotation.x += x;
+    annotation.y += y;
+    return annotation;
+  }
+
   saveAnnotations() {
     console.log(this.pageAnnotations.filter((annotation: PageAnnotation) => annotation.type && annotation.content));
   }

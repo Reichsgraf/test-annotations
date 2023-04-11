@@ -35,13 +35,8 @@ export class PageComponent {
   }
 
   dropOnHandler(event: any, annotation: PageAnnotation) {
-    annotation.x += event.x;
-    annotation.y += event.y;
+    this.pageAnnotationService.moveAnnotation(annotation, event.x, event.y);
     this.cdr.detectChanges();
-  }
-
-  dragOverHandler(event: any) {
-
   }
 
 }

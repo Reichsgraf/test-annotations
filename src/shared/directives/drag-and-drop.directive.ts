@@ -80,7 +80,6 @@ export class DragAndDropDirective implements OnInit {
   }
 
   private _onDragLeave($event: DragEvent) {
-    console.log('dragLeave', $event);
     this.dragOver.emit(false);
   }
 
