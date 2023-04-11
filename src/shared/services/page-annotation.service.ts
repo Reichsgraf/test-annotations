@@ -28,7 +28,7 @@ export class PageAnnotationService {
   }
 
   saveAnnotations() {
-    console.log(this.pageAnnotations);
+    console.log(this.pageAnnotations.filter((annotation: PageAnnotation) => annotation.type && annotation.content));
   }
 
 }
