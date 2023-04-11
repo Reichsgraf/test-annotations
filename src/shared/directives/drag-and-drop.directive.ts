@@ -72,14 +72,11 @@ export class DragAndDropDirective implements OnInit {
       this.elementRef.nativeElement.classList.add('free-dragging');
       this.initialX = $event.clientX;
       this.initialY = $event.clientY;
-    } else {
-      this.changedX += $event.clientX - this.initialX!;
-      this.changedY += $event.clientY - this.initialY!;
     }
     this.dragOver.emit(true);
   }
 
-  private _onDragLeave($event: DragEvent) {
+  private _onDragLeave() {
     this.dragOver.emit(false);
   }
 
