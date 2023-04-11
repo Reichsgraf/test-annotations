@@ -2,6 +2,12 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.2.
 
+By default, it redirects to page "/1" (aka "/:id", where we get document and annotations by id) with document with 5 pages.
+
+Document has Zoom buttons in header and Save option that returns data about annotations. Zoom does not modify the position of annotations in document.
+
+By clicking on a page, user can add annotations (adding process contains 3 steps: position selecting, content type selecting and content adding), after which the annotation can be moved or deleted. Incomplete annotations will be removed by default.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.

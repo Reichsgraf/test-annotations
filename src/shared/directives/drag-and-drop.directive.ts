@@ -17,8 +17,8 @@ export class DragAndDropDirective implements OnInit {
   changedY = 0;
 
   constructor(private elementRef: ElementRef,
-              private zone: NgZone
-  ) {}
+              private zone: NgZone) {
+  }
 
   ngOnInit() {
     this.zone.runOutsideAngular(() => {
@@ -54,14 +54,15 @@ export class DragAndDropDirective implements OnInit {
     this.changedX = 0;
     this.changedY = 0;
     this.elementRef.nativeElement.classList.remove('free-dragging');
+    this.elementRef.nativeElement.style.transform = `translate3d(0px, 0px, 0)`;
     this.dragOver.emit();
     $event.preventDefault();
     return false;
   }
 
   private _onDragOver($event: DragEvent) {
-    // TODO: this.elementRef.nativeElement.style.transform = `translate3d(${changedX}px, ${changedY}px, 0)`;
-    // TODO: this.elementRef.nativeElement.style.transform = `translate3d(0px, 0px, 0)`;
+    this.elementRef.nativeElement.style.transform =
+      `translate3d(${$event.clientX - this.initialX!}px, ${$event.clientY - this.initialY!}px, 0)`;
     $event.preventDefault();
     return false;
   }
