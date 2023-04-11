@@ -24,7 +24,7 @@
       </form>
     </ng-container>
     <ng-template #content>
-      <div class="annotation-text-content">{{formGroup.get('content')?.value}}</div>
+      <div class="annotation-text-content" draggable="true">{{formGroup.get('content')?.value}}</div>
     </ng-template>
   </ng-container>
 
@@ -33,7 +33,7 @@
       <input class="annotation-content-input" type="file" accept="image/*" (change)="setAnnotationContent($event)">
     </ng-container>
     <ng-template #content>
-      <img class="annotation-image-content" [src]="annotation.content" alt="">
+      <img class="annotation-image-content" draggable="true" [src]="annotation.content" alt="">
     </ng-template>
   </ng-container>
 </div>

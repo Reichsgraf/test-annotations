@@ -29,7 +29,13 @@ export class PageAnnotationService {
 
   moveAnnotation(annotation: PageAnnotation, x: number, y: number) {
     annotation.x += x;
+    if (annotation.x < 0) {
+      annotation.x = 0;
+    }
     annotation.y += y;
+    if (annotation.y < 0) {
+      annotation.y = 0;
+    }
     return annotation;
   }
 
