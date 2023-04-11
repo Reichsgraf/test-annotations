@@ -76,7 +76,9 @@ export class DragAndDropDirective implements OnInit {
     this.dragOver.emit(true);
   }
 
-  private _onDragLeave() {
+  private _onDragLeave($event: DragEvent) {
+    this.initialX = $event.clientX;
+    this.initialY = $event.clientY;
     this.dragOver.emit(false);
   }
 
