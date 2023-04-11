@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, Input, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {PageAnnotation} from "../../../../shared/models/page-annotation";
 import {FormBuilder, FormGroup} from "@angular/forms";
 
@@ -11,10 +11,9 @@ export class AnnotationComponent {
 
   @Input() annotation!: PageAnnotation;
   @Input() scale = 100;
+  @Input() clientWidth = 0;
 
   @Output() remove: EventEmitter<void> = new EventEmitter();
-
-  @ViewChild('content') contentElementRef!: ElementRef;
 
   annotationAnchorRadius = 9;
   formGroup: FormGroup;

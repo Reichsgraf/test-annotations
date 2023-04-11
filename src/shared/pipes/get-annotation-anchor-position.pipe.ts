@@ -5,12 +5,11 @@ import {Pipe, PipeTransform} from "@angular/core";
 })
 export class GetAnnotationAnchorPositionPipe implements PipeTransform {
 
-  transform(coordinates: number, anchorRadius: number, scale?: number): string {
-    if (scale) {
-      return `${coordinates * (scale / 100) - anchorRadius}px`
+  transform(coordinates: number, anchorRadius: number, scale: number, clientWidth?: number): string {
+    if (clientWidth) {
+      return `${coordinates * (scale / 100) + clientWidth * (1 - scale / 100) / 2 - anchorRadius}px`;
     }
-    return `${coordinates - anchorRadius}px`
-
+    return `${coordinates * (scale / 100) - anchorRadius}px`;
   }
 
 }

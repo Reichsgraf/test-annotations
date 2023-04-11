@@ -1,12 +1,12 @@
 <div class="annotation-anchor" (click)="removeAnnotation()"
-     [style.left]="annotation.x | getAnnotationAnchorPosition:annotationAnchorRadius"
+     [style.left]="annotation.x | getAnnotationAnchorPosition:annotationAnchorRadius:scale:clientWidth"
      [style.top]="annotation.y | getAnnotationAnchorPosition:annotationAnchorRadius:scale">
   ×
 </div>
 
-<div #content class="annotation-content" draggable="true"
+<div class="annotation-content" draggable="true"
      [style]="annotation.type | getAnnotationStyle:annotation.content"
-     [style.left]="annotation.x | getAnnotationContentPosition:annotationAnchorRadius"
+     [style.left]="annotation.x | getAnnotationContentPosition:annotationAnchorRadius:scale:clientWidth"
      [style.top]="annotation.y | getAnnotationContentPosition:annotationAnchorRadius:scale">
   <ng-container *ngIf="!annotation.type">
     <button class="annotation-type-option" (click)="setAnnotationType('text')">

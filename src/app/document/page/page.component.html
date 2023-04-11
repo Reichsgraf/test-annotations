@@ -1,9 +1,9 @@
-<img [src]="page" alt="" (click)="addAnnotation($event)" [style]="scale | getPageStyle">
+<img #content [src]="page" alt="" (click)="addAnnotation($event)" [style]="scale | getPageStyle">
 
 <ng-container *ngFor="let annotation of annotations; index as i">
   <app-annotation *ngIf="annotation.page === pageIndex"
                   drag-and-drop (dropOn)="dropOnHandler($event, annotation)"
                   [annotation]="annotation" (remove)="removeAnnotation(i)"
-                  [scale]="scale">
+                  [scale]="scale" [clientWidth]="contentElementRef.nativeElement.clientWidth">
   </app-annotation>
 </ng-container>

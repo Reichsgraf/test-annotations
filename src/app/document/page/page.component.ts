@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, Input} from '@angular/core';
+import {ChangeDetectorRef, Component, ElementRef, Input, ViewChild} from '@angular/core';
 import {PageAnnotation} from "../../../shared/models/page-annotation";
 import {PageAnnotationService} from "../../../shared/services/page-annotation.service";
 
@@ -21,6 +21,8 @@ export class PageComponent {
 
   @Input() annotations: PageAnnotation[] = [];
   @Input() scale = 100;
+
+  @ViewChild('content') contentElementRef!: ElementRef;
 
   constructor(private pageAnnotationService: PageAnnotationService,
               private cdr: ChangeDetectorRef) {
