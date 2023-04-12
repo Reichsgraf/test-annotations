@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, ElementRef, Input, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input} from '@angular/core';
 import {PageAnnotation} from "../../../shared/models/page-annotation";
 import {PageAnnotationService} from "../../../shared/services/page-annotation.service";
 
@@ -22,10 +22,9 @@ export class PageComponent {
   @Input() annotations: PageAnnotation[] = [];
   @Input() scale = 100;
 
-  @ViewChild('content') contentElementRef!: ElementRef;
-
   constructor(private pageAnnotationService: PageAnnotationService,
-              private cdr: ChangeDetectorRef) {
+              private cdr: ChangeDetectorRef,
+              private ref: ElementRef) {
   }
 
   addAnnotation(event: any) {
@@ -39,6 +38,10 @@ export class PageComponent {
   dropOnHandler(event: any, annotation: PageAnnotation) {
     this.pageAnnotationService.moveAnnotation(annotation, event.x, event.y);
     this.cdr.detectChanges();
+  }
+
+  get clientWidth(): number {
+    return this.ref.nativeElement.clientWidth;
   }
 
 }
