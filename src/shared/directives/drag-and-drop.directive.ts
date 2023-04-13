@@ -1,5 +1,4 @@
-import {Directive, ElementRef, EventEmitter, Input, NgZone, OnInit, Output} from "@angular/core";
-import {PageAnnotation} from "../models/page-annotation";
+import {Directive, ElementRef, EventEmitter, NgZone, OnInit, Output} from "@angular/core";
 
 @Directive({
   selector: '[drag-and-drop]',
@@ -8,8 +7,6 @@ export class DragAndDropDirective implements OnInit {
 
   @Output() dropOn: EventEmitter<any> = new EventEmitter();
   @Output() dragOver: EventEmitter<any> = new EventEmitter();
-
-  @Input() annotation!: PageAnnotation;
 
   initialX?: number;
   initialY?: number;
@@ -44,6 +41,8 @@ export class DragAndDropDirective implements OnInit {
     this.changedX += $event.clientX - this.initialX!;
     this.changedY += $event.clientY - this.initialY!;
     this.dropOn.emit({x: this.changedX, y: this.changedY});
+    this.elementRef.nativeElement.classList.remove('free-dragging');
+    this.elementRef.nativeElement.style.transform = `none`;
     $event.preventDefault();
     return false;
   }
@@ -53,8 +52,6 @@ export class DragAndDropDirective implements OnInit {
     this.initialY = undefined;
     this.changedX = 0;
     this.changedY = 0;
-    this.elementRef.nativeElement.classList.remove('free-dragging');
-    this.elementRef.nativeElement.style.transform = `translate3d(0px, 0px, 0)`;
     this.dragOver.emit();
     $event.preventDefault();
     return false;
@@ -70,16 +67,19 @@ export class DragAndDropDirective implements OnInit {
   private _onDragEnter($event: DragEvent) {
     if (!this.initialX && !this.initialY && this.initialX !== 0 && this.initialY !== 0) {
       this.elementRef.nativeElement.classList.add('free-dragging');
-      this.initialX = $event.clientX;
-      this.initialY = $event.clientY;
+      this.updateInitialCoordinates($event.clientX, $event.clientY);
     }
     this.dragOver.emit(true);
   }
 
   private _onDragLeave($event: DragEvent) {
-    this.initialX = $event.clientX;
-    this.initialY = $event.clientY;
+    this.updateInitialCoordinates($event.clientX, $event.clientY);
     this.dragOver.emit(false);
+  }
+
+  updateInitialCoordinates(x: number, y: number) {
+    this.initialX = x;
+    this.initialY = y;
   }
 
 }

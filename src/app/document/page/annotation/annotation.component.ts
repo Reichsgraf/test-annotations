@@ -40,7 +40,7 @@ export class AnnotationComponent {
 
       const reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]);
-      reader.onload = (_event) => this.annotation.content = reader.result as unknown as string;
+      reader.onload = () => this.annotation.content = reader.result as unknown as string;
 
       return;
     }
